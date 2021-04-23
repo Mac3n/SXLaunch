@@ -10,4 +10,13 @@ import Foundation
 
 class HomeViewModel: ObservableObject {
 
+    private var anyCancellable: Set<AnyCancellable> = []
+
+    init() {
+        SpaceXAPI.launches(query: [:])
+            .print()
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { print($0) })
+            .store(in: &anyCancellable)
+    }
 }
