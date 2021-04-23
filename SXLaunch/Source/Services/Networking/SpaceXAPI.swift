@@ -13,9 +13,17 @@ typealias Query = [String: Any]
 enum SpaceXAPI {
     static let network = NetworkProvider()
     static let baseURL = URL(string: "https://api.spacexdata.com/v4")!
+
+    case query(query: Query)
 }
 
-extension SpaceXAPI {
+/*
+ ✅ If the api endpoints are more complicated and having many diffrent APIs,
+ we could implement the generic Network with protocls that handle the request
+ build depend on the endpoint type and inputs.
+ */
+
+ extension SpaceXAPI {
     static func launches(query: Query) -> AnyPublisher<LaunchModel, Error> {
         var request = URLRequest(url: baseURL.appendingPathComponent("/launches/query"))
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
