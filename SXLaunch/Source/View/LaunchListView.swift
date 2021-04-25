@@ -38,9 +38,6 @@ struct LaunchListView: View {
             }
             .navigationTitle(Text("Launches"))
             .navigationBarTitleDisplayMode(.automatic)
-            .onReceive(viewModel.$docs, perform: { docs in
-                print(docs.count)
-            })
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
