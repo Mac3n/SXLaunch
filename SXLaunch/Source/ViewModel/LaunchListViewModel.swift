@@ -12,13 +12,45 @@ class LaunchListViewModel: ObservableObject {
 
     @Published var docs = [Doc]()
     @Published var isLoading = false
+    @Published var selectedSection: SelectedSection = .latest
 
     private var currentPage = 1
     private var limitPerPage = 20
+    private var getUpcomingLaunches = false
     private var canLoadMorePage = true
+    private var sortOrder: SortOrder = .asc
+    private var anyCancellable: Set<AnyCancellable> = []
+
+    enum SelectedSection: Int {
+        case all
+        case latest
+        case upcoming
+    }
+
+    enum SortOrder: String {
+        case asc
+        case desc
+    }
 
     init() {
-        fetchLaunches()
+        $selectedSection
+            .sink { [weak self] value in
+                self?.canLoadMorePage = true
+                self?.isLoading = false
+                self?.currentPage = 1
+                switch value {
+                case .all:
+                    self?.getUpcomingLaunches = false
+                    self?.sortOrder = .asc
+                case .upcoming:
+                    self?.getUpcomingLaunches = true
+                case .latest:
+                    self?.getUpcomingLaunches = false
+                    self?.sortOrder = .desc
+                }
+                self?.docs.removeAll()
+                self?.fetchLaunches()
+            }.store(in: &anyCancellable)
     }
 
     func loadNextPage(currentItem doc: Doc?) {
@@ -28,7 +60,7 @@ class LaunchListViewModel: ObservableObject {
         }
 
         let offsetIndex = docs.index(docs.endIndex, offsetBy: -5)
-        if docs.firstIndex(where: { $0.id == doc.id}) == offsetIndex {
+        if docs.firstIndex(where: { $0.id == doc.id}) == offsetIndex && selectedSection == .all {
             fetchLaunches()
         }
     }
@@ -40,14 +72,16 @@ class LaunchListViewModel: ObservableObject {
         isLoading = true
         SpaceXAPI.launches(query: [
             "query": [
-                "upcoming": false
+                "upcoming": getUpcomingLaunches
             ],
             "options": [
                 "limit": limitPerPage,
-                "page": currentPage
+                "page": currentPage,
+                "sort": [
+                    "flight_number": sortOrder.rawValue
+                ]
             ]
         ])
-        //.print()
         .receive(on: DispatchQueue.main)
         .handleEvents(receiveOutput: { response in
             self.canLoadMorePage = response.hasNextPage ?? false
