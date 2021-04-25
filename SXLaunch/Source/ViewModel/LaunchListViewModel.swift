@@ -44,6 +44,7 @@ class LaunchListViewModel: ObservableObject {
                     self?.sortOrder = .asc
                 case .upcoming:
                     self?.getUpcomingLaunches = true
+                    self?.sortOrder = .asc
                 case .latest:
                     self?.getUpcomingLaunches = false
                     self?.sortOrder = .desc
