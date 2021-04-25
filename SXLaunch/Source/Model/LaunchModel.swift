@@ -18,7 +18,8 @@ struct LaunchModel: Decodable {
 }
 
 // MARK: - Doc
-struct Doc: Decodable {
+struct Doc: Decodable, Identifiable {
+    let id: String?
     let fairings: Fairings?
     let links: Links?
     let staticFireDateUTC: String?
@@ -37,7 +38,6 @@ struct Doc: Decodable {
     let dateLocal, datePrecision: String?
     let upcoming: Bool?
     let cores: [Core]?
-    let id: String?
 
     enum CodingKeys: String, CodingKey {
         case fairings, links
