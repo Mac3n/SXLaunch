@@ -18,9 +18,7 @@ struct LaunchListView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(viewModel.docs) { doc in
-                            Text(doc.name ?? "")
-                                .frame(maxWidth: .infinity)
-                                .padding()
+                            LaunchItemView(doc: doc)
                                 .onAppear {
                                     viewModel.loadNextPage(currentItem: doc)
                                 }
@@ -39,5 +37,15 @@ struct LaunchListView: View {
 struct LaunchListView_Previews: PreviewProvider {
     static var previews: some View {
         LaunchListView()
+    }
+}
+
+private struct LaunchItemView: View {
+    var doc: Doc
+    var body: some View {
+        Text(doc.name ?? "")
+            .frame(maxWidth: .infinity)
+            .padding()
+
     }
 }
