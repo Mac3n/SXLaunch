@@ -12,20 +12,27 @@ struct LaunchListView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
-                Picker("", selection: $viewModel.selectedSection) {
-                    Text("Latest").tag(LaunchListViewModel.SelectedSection.latest)
-                    Text("Upcoming").tag(LaunchListViewModel.SelectedSection.upcoming)
-                    Text("All").tag(LaunchListViewModel.SelectedSection.all)
-                }
-                .padding(.horizontal)
-                .pickerStyle(SegmentedPickerStyle())
-                LazyVStack {
-                    ForEach(viewModel.docs) { doc in
-                        LaunchItemView(doc: doc)
-                            .onAppear {
-                                viewModel.loadNextPage(currentItem: doc)
+            ZStack {
+                VStack {
+                    ScrollView {
+                        Picker("", selection: $viewModel.selectedSection) {
+                            Text("Latest").tag(LaunchListViewModel.SelectedSection.latest)
+                            Text("Upcoming").tag(LaunchListViewModel.SelectedSection.upcoming)
+                            Text("All").tag(LaunchListViewModel.SelectedSection.all)
+                        }
+                        .padding(.horizontal)
+                        .pickerStyle(SegmentedPickerStyle())
+                        LazyVStack {
+                            ForEach(viewModel.docs) { doc in
+                                LaunchItemView(doc: doc)
+                                    .onAppear {
+                                        viewModel.loadNextPage(currentItem: doc)
+                                    }
                             }
+                        }
+                    }
+                    if viewModel.isLoading {
+                        ProgressView()
                     }
                 }
             }
