@@ -103,22 +103,37 @@ private struct LaunchItemView: View {
                                 .font(.headline)
                         }
                         .padding(.horizontal)
-                        .padding(.vertical, 8)
+                        .padding(.vertical, 4)
                         .background(status ? Color.green.opacity(0.2) : Color.red.opacity(0.2))
-                        .cornerRadius(16, corners: [.topLeft, .bottomRight])
+                        .cornerRadius(8, corners: [.topLeft, .bottomRight])
+                    } else {
+                        HStack {
+                            Image(systemName: "questionmark.circle.fill")
+                                .foregroundColor(.gray)
+                            Text("Pending")
+                                .fontWeight(.semibold)
+                                .foregroundColor(.gray)
+                                .font(.headline)
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 4)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(8, corners: [.topLeft, .bottomRight])
                     }
                 }
             }
             .padding()
-            HStack(alignment: .top) {
-                Image(systemName: "info.circle.fill")
-                Text(doc.details?.prefix(while: { $0 != "," }) ?? "")
-                    .font(.subheadline)
-                + Text(" more...")
-                    .foregroundColor(.accentColor)
+            if doc.hasDetail {
+                HStack(alignment: .top) {
+                    Image(systemName: "info.circle.fill")
+                    Text(doc.prepareDetail)
+                        .font(.subheadline)
+                    + Text(" more...")
+                        .foregroundColor(.accentColor)
+                }
+                .padding(.horizontal)
+                .padding(.bottom)
             }
-            .padding(.horizontal)
-            .padding(.bottom)
             Spacer()
         }
         .frame(maxWidth: .infinity)

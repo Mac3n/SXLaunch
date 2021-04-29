@@ -117,3 +117,19 @@ struct Reddit: Decodable {
     let campaign, launch: String?
     let media, recovery: String?
 }
+
+extension Doc {
+    var hasDetail: Bool {
+        guard let detail = details, !detail.isEmpty else {
+            return false
+        }
+        return true
+    }
+
+    var prepareDetail: String {
+        guard let details = details else {
+            return ""
+        }
+        return String(details.prefix(while: { $0 != "," }).prefix(150))
+    }
+}
