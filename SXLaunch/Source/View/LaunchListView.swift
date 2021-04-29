@@ -63,7 +63,6 @@ private struct LaunchItemView: View {
     var doc: Doc
     var body: some View {
         VStack(alignment: .leading) {
-            //VStack(spacing: 12) {
             HStack {
                 Text("Flight #\(doc.flightNumber ?? 0)")
                     .foregroundColor(.secondary)
@@ -110,12 +109,19 @@ private struct LaunchItemView: View {
                     }
                 }
             }
-            //}
             .padding()
+            HStack(alignment: .top) {
+                Image(systemName: "info.circle.fill")
+                Text(doc.details?.prefix(while: { $0 != "," }) ?? "")
+                    .font(.subheadline)
+                + Text(" more...")
+                    .foregroundColor(.accentColor)
+            }
+            .padding(.horizontal)
+            .padding(.bottom)
             Spacer()
         }
         .frame(maxWidth: .infinity)
-        //.frame(height: 200)
         .background(Color(.systemBackground))
         .cornerRadius(16)
         .padding()
