@@ -40,4 +40,11 @@ enum SpaceXAPI {
             .map(\.value)
             .eraseToAnyPublisher()
     }
+
+    static func getRocketInfo(id: String) -> AnyPublisher<RocketInfoModel, Error> {
+        let request = URLRequest(url: baseURL.appendingPathComponent("/rockets/\(id)"))
+        return network.fetch(request)
+            .map(\.value)
+            .eraseToAnyPublisher()
+    }
 }
