@@ -10,6 +10,7 @@ import SwiftUI
 
 struct LaunchListView: View {
     @StateObject var viewModel = LaunchListViewModel()
+    @Namespace var animation
 
     init() {
         let navigationBarAppearance = UINavigationBarAppearance()
@@ -60,6 +61,8 @@ struct LaunchListView_Previews: PreviewProvider {
 }
 
 private struct LaunchItemView: View {
+    @State private var showDetail = false
+
     var doc: Doc
     var body: some View {
         VStack(alignment: .leading) {
@@ -140,5 +143,11 @@ private struct LaunchItemView: View {
         .background(Color(.systemBackground))
         .cornerRadius(16)
         .padding()
+        .fullScreenCover(isPresented: $showDetail) {
+            LaunchDetailView(viewModel: LaunchDetailViewModel(doc: doc))
+        }
+        .onTapGesture {
+            showDetail.toggle()
+        }
     }
 }
