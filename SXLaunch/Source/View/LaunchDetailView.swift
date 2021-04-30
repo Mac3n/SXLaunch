@@ -5,6 +5,7 @@
 //  Created by Mohsen Taabodi on 4/30/21.
 //
 
+import CoreLocation
 import Kingfisher
 import SwiftUI
 
@@ -37,6 +38,7 @@ struct LaunchDetailView: View {
                 }
                 .frame(height: 300)
             }
+
             VStack(alignment: .leading, spacing: 16) {
                 HStack(spacing: 16) {
                     KFImage.url(viewModel.logoURL)
@@ -139,6 +141,66 @@ struct LaunchDetailView: View {
                 .padding()
                 .background(Color.gray.opacity(0.1))
                 .cornerRadius(8)
+
+                HStack {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Rectangle()
+                                .frame(width: 4)
+                                .foregroundColor(Color.purple)
+                            Text("Launch")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            Spacer()
+                        }
+                        HStack {
+                            Rectangle()
+                                .frame(width: 4)
+                                .foregroundColor(Color.clear)
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(viewModel.launchpadInfo?.name ?? "")
+                                    .font(.body)
+                                    .fontWeight(.semibold)
+                                Text(viewModel.launchpadInfo?.region ?? "")
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                            }
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
+
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Rectangle()
+                                .frame(width: 4)
+                                .foregroundColor(Color.purple)
+                            Text("Landing")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                            Spacer()
+                        }
+                        HStack {
+                            Rectangle()
+                                .frame(width: 4)
+                                .foregroundColor(Color.clear)
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(viewModel.landpadInfo?.name ?? "")
+                                    .font(.body)
+                                    .fontWeight(.semibold)
+                                Text(viewModel.landpadInfo?.region ?? "")
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                            }
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
+                }
 
                 VStack(alignment: .leading) {
                     HStack {

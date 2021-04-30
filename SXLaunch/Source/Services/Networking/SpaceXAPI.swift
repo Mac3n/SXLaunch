@@ -35,6 +35,13 @@ enum SpaceXAPI {
     }
 
     static func getLaunchpad(id: String) -> AnyPublisher<LaunchpadModel, Error> {
+        let request = URLRequest(url: baseURL.appendingPathComponent("/launchpads/\(id)"))
+        return network.fetch(request)
+            .map(\.value)
+            .eraseToAnyPublisher()
+    }
+
+    static func getLandpad(id: String) -> AnyPublisher<LandpadModel, Error> {
         let request = URLRequest(url: baseURL.appendingPathComponent("/landpads/\(id)"))
         return network.fetch(request)
             .map(\.value)

@@ -19,10 +19,14 @@ class LaunchDetailViewModel: ObservableObject {
     @Published var launchStatus : Bool?
     @Published var launchData: String = ""
     @Published var rocketInfo: RocketInfoModel?
+    @Published var launchpadInfo: LaunchpadModel?
+    @Published var landpadInfo: LandpadModel?
 
     init(doc: Doc) {
         self.doc = doc
         getRocketInfo()
+        getLaunchpadInfo()
+        getLandpadInfo()
         
         galleryItem = doc.links?.flickr?.original?.compactMap { URL(string: $0) }.randomElement()
         launchTilte = doc.name ?? ""
@@ -36,7 +40,7 @@ class LaunchDetailViewModel: ObservableObject {
     }
 
 
-    func getRocketInfo() {
+    private func getRocketInfo() {
         guard let rocketID = doc.rocket else {
             return
         }
@@ -49,5 +53,35 @@ class LaunchDetailViewModel: ObservableObject {
                 Just(self.rocketInfo)
             }
             .assign(to: &$rocketInfo)
+    }
+
+    private func getLaunchpadInfo() {
+        guard let launchpadID = doc.launchpad else {
+            return
+        }
+        SpaceXAPI.getLaunchpad(id: launchpadID)
+            .receive(on: DispatchQueue.main)
+            .map { response in
+                return response
+            }
+            .catch { _ in
+                Just(self.launchpadInfo)
+            }
+            .assign(to: &$launchpadInfo)
+    }
+
+    private func getLandpadInfo() {
+        guard let landpadID = doc.cores?.first?.landpad else {
+            return
+        }
+        SpaceXAPI.getLandpad(id: landpadID)
+            .receive(on: DispatchQueue.main)
+            .map { response in
+                return response
+            }
+            .catch { _ in
+                Just(self.landpadInfo)
+            }
+            .assign(to: &$landpadInfo)
     }
 }
