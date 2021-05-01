@@ -27,9 +27,11 @@ struct LaunchDetailView: View {
                 GeometryReader { reader in
                     if reader.frame(in: .global).minY > -300 {
                         KFImage(viewModel.galleryItem)
+                            .resizable()
                             .placeholder({
                                 ProgressView()
                             })
+                            .loadImmediately()
                             .fade(duration: 0.25)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
