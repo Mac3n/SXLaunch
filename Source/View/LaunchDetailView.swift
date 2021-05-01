@@ -22,6 +22,7 @@ struct LaunchDetailView: View {
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
+            // MARK: - Header imageview
             if viewModel.showHeaderImage {
                 GeometryReader { reader in
                     if reader.frame(in: .global).minY > -300 {
@@ -39,6 +40,7 @@ struct LaunchDetailView: View {
                 .frame(height: 300)
             }
 
+            // MARK: - Detail body
             VStack(alignment: .leading, spacing: 16) {
                 HStack(spacing: 16) {
                     KFImage.url(viewModel.logoURL)
@@ -53,6 +55,8 @@ struct LaunchDetailView: View {
                         .fade(duration: 0.25)
                         .resizable()
                         .frame(width: 80, height: 80)
+
+                    // MARK: - Title and logo View
                     VStack(alignment: .leading, spacing: 8) {
                         Text(viewModel.launchTilte)
                             .fontWeight(.bold)
@@ -84,6 +88,7 @@ struct LaunchDetailView: View {
                     Spacer()
                 }
 
+                // MARK: - Rokcet Detail view
                 VStack(alignment: .leading) {
                     HStack {
                         Rectangle()
@@ -142,6 +147,7 @@ struct LaunchDetailView: View {
                 .background(Color.gray.opacity(0.1))
                 .cornerRadius(8)
 
+                // MARK: Launch and Landing views
                 HStack {
                     VStack(alignment: .leading) {
                         HStack {
@@ -202,6 +208,7 @@ struct LaunchDetailView: View {
                     .cornerRadius(8)
                 }
 
+                // MARK: - Mission Detail view
                 VStack(alignment: .leading) {
                     HStack {
                         Rectangle()
