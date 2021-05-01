@@ -41,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5F5BD038263D168600CFAD74 /* SXLauch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SXLauch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F5BD038263D168600CFAD74 /* SXLaunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SXLaunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5BD048263D168600CFAD74 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5BD04C263D168600CFAD74 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		5F5BD04E263D168600CFAD74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		5F5BD039263D168600CFAD74 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5F5BD038263D168600CFAD74 /* SXLauch.app */,
+				5F5BD038263D168600CFAD74 /* SXLaunch.app */,
 				5F5BD048263D168600CFAD74 /* Tests iOS.xctest */,
 			);
 			name = Products;
@@ -231,9 +231,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5F5BD037263D168600CFAD74 /* SXLauch (iOS) */ = {
+		5F5BD037263D168600CFAD74 /* SXLaunch (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F5BD062263D168600CFAD74 /* Build configuration list for PBXNativeTarget "SXLauch (iOS)" */;
+			buildConfigurationList = 5F5BD062263D168600CFAD74 /* Build configuration list for PBXNativeTarget "SXLaunch (iOS)" */;
 			buildPhases = (
 				5F5BD034263D168600CFAD74 /* Sources */,
 				5F5BD035263D168600CFAD74 /* Frameworks */,
@@ -243,12 +243,12 @@
 			);
 			dependencies = (
 			);
-			name = "SXLauch (iOS)";
+			name = "SXLaunch (iOS)";
 			packageProductDependencies = (
 				5F9D4737263D18DC00097DDF /* Kingfisher */,
 			);
 			productName = "SXLauch (iOS)";
-			productReference = 5F5BD038263D168600CFAD74 /* SXLauch.app */;
+			productReference = 5F5BD038263D168600CFAD74 /* SXLaunch.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5F5BD047263D168600CFAD74 /* Tests iOS */ = {
@@ -287,7 +287,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5F5BD02F263D168600CFAD74 /* Build configuration list for PBXProject "SXLauch" */;
+			buildConfigurationList = 5F5BD02F263D168600CFAD74 /* Build configuration list for PBXProject "SXLaunch" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -303,7 +303,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5F5BD037263D168600CFAD74 /* SXLauch (iOS) */,
+				5F5BD037263D168600CFAD74 /* SXLaunch (iOS) */,
 				5F5BD047263D168600CFAD74 /* Tests iOS */,
 			);
 		};
@@ -366,7 +366,7 @@
 /* Begin PBXTargetDependency section */
 		5F5BD04A263D168600CFAD74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5F5BD037263D168600CFAD74 /* SXLauch (iOS) */;
+			target = 5F5BD037263D168600CFAD74 /* SXLaunch (iOS) */;
 			targetProxy = 5F5BD049263D168600CFAD74 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -489,6 +489,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ECX9KH2322;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -497,7 +498,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mac3n.SXLauch;
-				PRODUCT_NAME = SXLauch;
+				PRODUCT_NAME = SXLaunch;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -510,6 +511,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ECX9KH2322;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -518,7 +520,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mac3n.SXLauch;
-				PRODUCT_NAME = SXLauch;
+				PRODUCT_NAME = SXLaunch;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -572,7 +574,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5F5BD02F263D168600CFAD74 /* Build configuration list for PBXProject "SXLauch" */ = {
+		5F5BD02F263D168600CFAD74 /* Build configuration list for PBXProject "SXLaunch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F5BD060263D168600CFAD74 /* Debug */,
@@ -581,7 +583,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F5BD062263D168600CFAD74 /* Build configuration list for PBXNativeTarget "SXLauch (iOS)" */ = {
+		5F5BD062263D168600CFAD74 /* Build configuration list for PBXNativeTarget "SXLaunch (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F5BD063263D168600CFAD74 /* Debug */,
