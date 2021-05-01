@@ -19,37 +19,35 @@ struct LaunchListView: View {
     }
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                VStack {
-                    ScrollView {
-                        LazyVStack(spacing: 8, pinnedViews: [.sectionHeaders]) {
-                            Section(header: Picker("", selection: $viewModel.selectedSection) {
-                                Text("Latest").tag(LaunchListViewModel.SelectedSection.latest)
-                                Text("Upcoming").tag(LaunchListViewModel.SelectedSection.upcoming)
-                                Text("All").tag(LaunchListViewModel.SelectedSection.all)
-                            }
-                            .background(Color(.secondarySystemBackground))
-                            .padding()
-                            .pickerStyle(SegmentedPickerStyle())) {
-                                ForEach(viewModel.docs) { doc in
-                                    LaunchItemView(doc: doc)
-                                        .redacted(reason: viewModel.isLoading ? .placeholder : [])
-                                        .onAppear {
-                                            viewModel.loadNextPage(currentItem: doc)
-                                        }
-                                }
+        ZStack {
+            VStack {
+                ScrollView {
+                    LazyVStack(spacing: 8, pinnedViews: [.sectionHeaders]) {
+                        Section(header: Picker("", selection: $viewModel.selectedSection) {
+                            Text("Latest").tag(LaunchListViewModel.SelectedSection.latest)
+                            Text("Upcoming").tag(LaunchListViewModel.SelectedSection.upcoming)
+                            Text("All").tag(LaunchListViewModel.SelectedSection.all)
+                        }
+                        .background(Color(.secondarySystemBackground))
+                        .padding()
+                        .pickerStyle(SegmentedPickerStyle())) {
+                            ForEach(viewModel.docs) { doc in
+                                LaunchItemView(doc: doc)
+                                    .redacted(reason: viewModel.isLoading ? .placeholder : [])
+                                    .onAppear {
+                                        viewModel.loadNextPage(currentItem: doc)
+                                    }
                             }
                         }
                     }
-                    if viewModel.isLoading {
-                        ProgressView()
-                    }
+                }
+                if viewModel.isLoading {
+                    ProgressView()
                 }
             }
-            .navigationTitle(Text("Launches"))
-            .navigationBarTitleDisplayMode(.automatic)
         }
+        .navigationTitle(Text("Launches"))
+        .navigationBarTitleDisplayMode(.automatic)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
@@ -131,7 +129,7 @@ private struct LaunchItemView: View {
                     Image(systemName: "info.circle.fill")
                     Text(doc.prepareDetail)
                         .font(.subheadline)
-                    + Text(" more...")
+                        + Text(" more...")
                         .foregroundColor(.accentColor)
                 }
                 .padding(.horizontal)

@@ -11,7 +11,7 @@ import SwiftUI
 struct SXLaunchApp: App {
     var body: some Scene {
         WindowGroup {
-            LaunchListView()
+            HomeView()
         }
     }
 }

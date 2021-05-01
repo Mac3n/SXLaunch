@@ -27,6 +27,7 @@
 		5F9D4728263D176200097DDF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D4715263D176200097DDF /* Assets.xcassets */; };
 		5F9D4729263D176200097DDF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F9D4717263D176200097DDF /* Preview Assets.xcassets */; };
 		5F9D4738263D18DC00097DDF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5F9D4737263D18DC00097DDF /* Kingfisher */; };
+		827979EB263DA068008AD8D9 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827979EA263DA068008AD8D9 /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		5F9D4714263D176200097DDF /* NetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		5F9D4715263D176200097DDF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F9D4717263D176200097DDF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		827979EA263DA068008AD8D9 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			children = (
 				5F9D4702263D176200097DDF /* Int+Extension.swift */,
 				5F9D4703263D176200097DDF /* View+Extension.swift */,
+				827979EA263DA068008AD8D9 /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				5F9D471F263D176200097DDF /* LaunchpadModel.swift in Sources */,
 				5F9D4722263D176200097DDF /* LaunchDetailView.swift in Sources */,
 				5F9D471D263D176200097DDF /* RoundedCorner.swift in Sources */,
+				827979EB263DA068008AD8D9 /* Date+Extension.swift in Sources */,
 				5F9D471A263D176200097DDF /* LaunchListViewModel.swift in Sources */,
 				5F9D471E263D176200097DDF /* LaunchModel.swift in Sources */,
 				5F9D471B263D176200097DDF /* Int+Extension.swift in Sources */,
@@ -496,7 +500,7 @@
 				PRODUCT_NAME = SXLauch;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -517,7 +521,7 @@
 				PRODUCT_NAME = SXLauch;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
