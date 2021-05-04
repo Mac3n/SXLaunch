@@ -54,11 +54,4 @@ enum SpaceXAPI {
             .map(\.value)
             .eraseToAnyPublisher()
     }
-
-    static func getNextLaunch() -> AnyPublisher<Doc, Error> {
-        let request = URLRequest(url: baseURL.appendingPathComponent("/launches/next"))
-        return network.fetch(request)
-            .map(\.value)
-            .eraseToAnyPublisher()
-    }
 }

@@ -24,21 +24,32 @@ class HomeViewModel: ObservableObject {
     }
 
     func getNextLaunch() {
-        SpaceXAPI.getNextLaunch()
-            .receive(on: DispatchQueue.main)
-            .map { $0 }
-            .handleEvents(receiveOutput: { doc in
-                guard let time = doc?.dateUnix else {
-                    return
-                }
-                self.launchUnixDate = time
-                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countdown), userInfo: nil, repeats: true)
-                self.timer?.fire()
-            })
-            .catch { _ in
-                Just(self.doc)
+        SpaceXAPI.launches(query: [
+            "query": [
+                "upcoming": true
+            ],
+            "options": [
+                "limit": 1,
+                "page": 1,
+                "sort": [
+                    "flight_number": "asc"
+                ]
+            ]
+        ])
+        .receive(on: DispatchQueue.main)
+        .map { $0.docs?.last }
+        .handleEvents(receiveOutput: { doc in
+            guard let time = doc?.dateUnix else {
+                return
             }
-            .assign(to: &$doc)
+            self.launchUnixDate = time
+            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.countdown), userInfo: nil, repeats: true)
+            self.timer?.fire()
+        })
+        .catch { _ in
+            Just(self.doc)
+        }
+        .assign(to: &$doc)
     }
 
     @objc func countdown() {
